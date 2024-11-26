@@ -1,6 +1,7 @@
 import React from 'react';
 import AuthForm from './Authform.tsx';
 import './Auth.css';
+import {Link} from "react-router-dom";
 
 const Register: React.FC = () => {
     const fields = [
@@ -15,7 +16,14 @@ const Register: React.FC = () => {
         console.log('Register submitted');
     };
 
-    return <AuthForm title="Register" fields={fields} buttonText="Register" onSubmit={handleSubmit} />;
+    return (
+        <div className="auth-container">
+            <AuthForm title="Register" fields={fields} buttonText="Register" onSubmit={handleSubmit} />
+            <div className="switch-link">
+                <p>Already have an account? <Link to="/login">Login here</Link></p>
+            </div>
+        </div>
+    );
 };
 
 export default Register;
