@@ -1,8 +1,9 @@
-import React from "react";
+import React from 'react';
 
 interface Field {
     type: string;
     placeholder: string;
+    name: string;
     required?: boolean;
 }
 
@@ -25,6 +26,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, fields, buttonText, onSubmit
                         key={index}
                         type={field.type}
                         placeholder={field.placeholder}
+                        name={field.name}
                         required={field.required || false}
                     />
                 ))}

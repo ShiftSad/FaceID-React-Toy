@@ -1,28 +1,46 @@
 import React from 'react';
+
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import {auth} from "../../firebase.ts";
 import AuthForm from './Authform.tsx';
-import './Auth.css';
-import {Link} from "react-router-dom";
 
 const Register: React.FC = () => {
-    const fields = [
-        { type: 'text', placeholder: 'Username', required: true },
-        { type: 'email', placeholder: 'Email', required: true },
-        { type: 'password', placeholder: 'Password', required: true },
-        { type: 'password', placeholder: 'Confirm Password', required: true },
-    ];
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log('Register submitted');
+    const handleRegister = async (email: string, password: string) => {
+        try {
+            await createUserWithEmailAndPassword(auth, email, password);
+            alert('Registration successful');
+        } catch (error: unknown) {
+            if (error instanceof Error) alert(error.message);
+            else alert('An unexpected error occurred.');
+        }
     };
 
+    const fields = [
+        { type: 'email', placeholder: 'Email', name: 'email', required: true },
+        { type: 'password', placeholder: 'Password', name: 'password', required: true },
+        { type: 'password', placeholder: 'Confirm Password', name: 'confirmPassword', required: true },
+    ];
+
     return (
-        <div className="auth-container">
-            <AuthForm title="Register" fields={fields} buttonText="Register" onSubmit={handleSubmit} />
-            <div className="switch-link">
-                <p>Already have an account? <Link to="/login">Login here</Link></p>
-            </div>
-        </div>
+        <AuthForm
+            title="Register"
+            fields={fields}
+            buttonText="Register"
+            onSubmit={async (event) => {
+                event.preventDefault();
+                const formData = new FormData(event.currentTarget as HTMLFormElement);
+                const email = formData.get('email') as string;
+                const password = formData.get('password') as string;
+                const confirmPassword = formData.get('confirmPassword') as string;
+
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match');
+                    return;
+                }
+
+                await handleRegister(email, password);
+            }}
+        />
     );
 };
 
