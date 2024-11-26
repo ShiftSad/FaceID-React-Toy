@@ -9,6 +9,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Updated Node.js version
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
       # Step to generate the .env file from GitHub Secrets
       - name: Create .env file
         run: |
