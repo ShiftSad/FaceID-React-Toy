@@ -13,7 +13,6 @@ interface AuthFormProps {
     onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
-
 const AuthForm: React.FC<AuthFormProps> = ({ title, fields, buttonText, onSubmit }) => {
     return (
         <div className="container">
