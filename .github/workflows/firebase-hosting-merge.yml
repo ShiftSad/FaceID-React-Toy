@@ -18,13 +18,13 @@ jobs:
       # Step to generate the .env file from GitHub Secrets
       - name: Create .env file
         run: |
-          echo "VITE_API_KEY=${{ secrets.VITE_API_KEY }}" >> .env
-          echo "VITE_AUTH_DOMAIN=${{ secrets.VITE_AUTH_DOMAIN }}" >> .env
-          echo "VITE_PROJECT_ID=${{ secrets.VITE_PROJECT_ID }}" >> .env
-          echo "VITE_STORAGE_BUCKET=${{ secrets.VITE_STORAGE_BUCKET }}" >> .env
-          echo "VITE_MESSAGING_SENDER_ID=${{ secrets.VITE_MESSAGING_SENDER_ID }}" >> .env
-          echo "VITE_APP_ID=${{ secrets.VITE_APP_ID }}" >> .env
-          echo "VITE_MEASUREMENT_ID=${{ secrets.VITE_MEASUREMENT_ID }}" >> .env
+          echo "VITE_APP_API_KEY=${{ secrets.VITE_API_KEY }}" >> .env
+          echo "VITE_APP_AUTH_DOMAIN=${{ secrets.VITE_AUTH_DOMAIN }}" >> .env
+          echo "VITE_APP_PROJECT_ID=${{ secrets.VITE_PROJECT_ID }}" >> .env
+          echo "VITE_APP_STORAGE_BUCKET=${{ secrets.VITE_STORAGE_BUCKET }}" >> .env
+          echo "VITE_APP_MESSAGING_SENDER_ID=${{ secrets.VITE_MESSAGING_SENDER_ID }}" >> .env
+          echo "VITE_APP_APP_ID=${{ secrets.VITE_APP_ID }}" >> .env
+          echo "VITE_APP_MEASUREMENT_ID=${{ secrets.VITE_MEASUREMENT_ID }}" >> .env
 
       # Install dependencies and build
       - run: npm ci && npm run build
