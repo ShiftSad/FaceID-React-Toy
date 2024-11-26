@@ -24,14 +24,13 @@ body {
     color: #333333;
 }
 
-.input {
+.auth-form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 20px;
 }
 
-.input input {
+.auth-form input {
     padding: 10px;
     border: 1px solid #cccccc;
     border-radius: 4px;
@@ -39,7 +38,7 @@ body {
     outline: none;
 }
 
-.input input:focus {
+.auth-form input:focus {
     border-color: #007BFF;
     box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
 }

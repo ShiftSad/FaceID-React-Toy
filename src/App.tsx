@@ -1,4 +1,4 @@
-import Login from "./login/Login.tsx";
+import Login from "./components/auth/Login.tsx";
 import './App.css'
 
 function App() {
